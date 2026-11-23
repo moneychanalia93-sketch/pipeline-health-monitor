@@ -1,0 +1,68 @@
+{
+  "pipelines": [
+    {
+      "name": "orders_daily",
+      "owner": "orders-team",
+      "interval_hours": 24,
+      "freshness_hours": 28,
+      "band_percent": 30,
+      "required_columns": ["order_id", "customer_id", "order_total", "order_date"]
+    },
+    {
+      "name": "carrier_events",
+      "owner": "events-team",
+      "interval_hours": 6,
+      "freshness_hours": 8,
+      "band_percent": 40,
+      "required_columns": ["event_id", "carrier_code", "event_type", "event_time"]
+    },
+    {
+      "name": "inventory_snapshot",
+      "owner": "inventory-team",
+      "interval_hours": 24,
+      "freshness_hours": 28,
+      "band_percent": 30,
+      "required_columns": ["sku", "warehouse_id", "quantity", "snapshot_date"]
+    },
+    {
+      "name": "shipments_feed",
+      "owner": "shipping-team",
+      "interval_hours": 24,
+      "freshness_hours": 28,
+      "band_percent": 30,
+      "required_columns": ["shipment_id", "order_id", "status", "ship_date"]
+    },
+    {
+      "name": "customs_docs",
+      "owner": "trade-team",
+      "interval_hours": 24,
+      "freshness_hours": 28,
+      "band_percent": 35,
+      "required_columns": ["doc_id", "shipment_id", "country_code", "doc_type"]
+    },
+    {
+      "name": "returns_daily",
+      "owner": "returns-team",
+      "interval_hours": 24,
+      "freshness_hours": 28,
+      "band_percent": 30,
+      "required_columns": ["return_id", "order_id", "reason_code", "return_date"]
+    },
+    {
+      "name": "billing_export",
+      "owner": "finance-team",
+      "interval_hours": 24,
+      "freshness_hours": 28,
+      "band_percent": 25,
+      "required_columns": ["invoice_id", "customer_id", "amount", "currency"]
+    },
+    {
+      "name": "route_plans",
+      "owner": "routing-team",
+      "interval_hours": 24,
+      "freshness_hours": 28,
+      "band_percent": 30,
+      "required_columns": ["route_id", "carrier_code", "origin", "destination"]
+    }
+  ]
+}

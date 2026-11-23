@@ -1,0 +1,5 @@
+*.db
+__pycache__/
+*.pyc
+health*.html
+_private/
